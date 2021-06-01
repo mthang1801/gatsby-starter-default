@@ -1,123 +1,29 @@
-import React from "react"
-import Layout from "../containers/Layout"
-import Banners from "../components/Carousel/Banners"
-import Categories from "../components/Carousel/Categories"
-import { graphql, useStaticQuery } from "gatsby"
-import ProductsList from "../components/Product/ProductsList"
-import useLanguage from "../components/Global/useLanguage"
-import Seo from "../components/Seo/Seo"
-function Home() {
-  let { newProducts, recommendedProducts } = useStaticQuery(query)
-  const { i18n, lang } = useLanguage()
-  const { product, seo } = i18n.store.data[lang].translation
-  //format static data
-  const newProductsEdges = newProducts?.edges?.map(({ node }) => node)
-  const recommendedProductsEdges = recommendedProducts?.edges?.map(({node}) => node)
-  return (
-    <>    
-    <Seo title={seo.home} description="Kathy Vintage Chuyên cung cấp quần áo nam nữ sỉ và lẻ"/>
-    <Layout>
-      <Banners />
-      <Categories />
-      {newProductsEdges?.length ? (
-        <ProductsList
-          header={product.newProducts}
-          products={newProductsEdges}          
-          isAllProducts
-        />
-      ) : null}
-      {recommendedProductsEdges?.length ? (
-        <ProductsList
-          header={product.recommendedProducts}
-          products={recommendedProductsEdges}
-          isAllProducts
-        />
-      ) : null}
-    </Layout>
-    </>
-  )
-}
+import * as React from "react"
+import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 
-const query = graphql`
-  query {
-    newProducts: allContentfulProduct(
-      sort: { fields: updatedAt, order: DESC }
-      limit: 30
-    ) {
-      edges {
-        node {
-          name_en
-          name_vi
-          slug
-          unitPrice
-          isDiscount
-          discountPercentage
-          shippingFee
-          images {
-            fluid {
-              ...GatsbyContentfulFluid
-            }
-          }
-          portfolio{
-            name_en
-            name_vi
-            slug
-          }
-          category{
-            name_en
-            name_vi
-            slug
-          }
-          productGroup{
-            name_en
-            name_vi
-            slug
-          }
-          updatedAt(formatString: "DD/MM/YYYY")
-        }
-      }
-      totalCount
-    }
-    recommendedProducts: allContentfulProduct(
-    	filter :{isRecommended :{eq : true}}
-      sort: { fields: updatedAt, order: DESC }
-      limit: 30
-    ) {
-      edges {
-        node {
-          name_en
-          name_vi
-          slug
-          unitPrice
-          isDiscount
-          discountPercentage
-          shippingFee
-          images {
-            fluid {
-              src
-            }
-          }
-          portfolio{
-            name_en
-            name_vi
-            slug
-          }
-          category{
-            name_en
-            name_vi
-            slug
-          }
-          productGroup{
-            name_en
-            name_vi
-            slug
-          }
-          updatedAt(formatString: "DD/MM/YYYY")
-        }
-      }
-    }
-  }
-  
-`
+import Layout from "../components/layout"
+import Seo from "../components/seo"
 
-export default Home
+const IndexPage = () => (
+  <Layout>
+    <Seo title="Home" />
+    <h1>Hi people</h1>
+    <p>Welcome to your new Gatsby site.</p>
+    <p>Now go build something great.</p>
+    <StaticImage
+      src="../images/gatsby-astronaut.png"
+      width={300}
+      quality={95}
+      formats={["AUTO", "WEBP", "AVIF"]}
+      alt="A Gatsby astronaut"
+      style={{ marginBottom: `1.45rem` }}
+    />
+    <p>
+      <Link to="/page-2/">Go to page 2</Link> <br />
+      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+    </p>
+  </Layout>
+)
+
+export default IndexPage
