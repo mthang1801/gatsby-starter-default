@@ -1999,7 +1999,7 @@
   dependencies:
     "@babel/runtime" "^7.4.4"
 
-"@material-ui/lab@*":
+"@material-ui/lab@^4.0.0-alpha.58":
   "integrity" "sha512-GKHlJqLxUeHH3L3dGQ48ZavYrqGOTXkFkiEiuYMAnAvXAZP4rhMIqeHOPXSUQan4Bd8QnafDcpovOSLnadDmKw=="
   "resolved" "https://registry.npmjs.org/@material-ui/lab/-/lab-4.0.0-alpha.58.tgz"
   "version" "4.0.0-alpha.58"
@@ -6985,7 +6985,7 @@
   "resolved" "https://registry.npmjs.org/gatsby-plugin-disqus/-/gatsby-plugin-disqus-1.2.2.tgz"
   "version" "1.2.2"
 
-"gatsby-plugin-firebase@*":
+"gatsby-plugin-firebase@^0.2.0-beta.4":
   "integrity" "sha512-F1uh9T5dY38aeNvKzqj+3K655dce1QS70wuG4bhV9L3cnTJR2vitTWyIoCvRJJfPs7Xq7LgjUDmHDrEos4S3gQ=="
   "resolved" "https://registry.npmjs.org/gatsby-plugin-firebase/-/gatsby-plugin-firebase-0.2.0-beta.4.tgz"
   "version" "0.2.0-beta.4"
